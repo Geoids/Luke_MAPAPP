@@ -1,0 +1,48 @@
+{% extends "tethys_apps/app_base.html" %}
+{% load staticfiles %}
+{% block app_navigation_items %}
+  <li class="title">  </li>
+  <li class="active"><a href="/apps/mapapp"><h4>Home</h4></a></li>
+  <li><a href="/apps/mapapp/map"><h4>Map View</h4></a></li>
+  <li><a href="/apps/mapapp/data"><h4>Data Services</h4></a></li>
+<li><a href="/apps/mapapp/about"><h4>About</h4></a></li>
+
+{% endblock %}
+
+{% block app_content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<br>
+    <br>
+<br>
+    <br>
+<center><h3>
+This is where the <a href=http://geoserver2.byu.edu/arcgis/rest/services/Geoids/UtahAADT/MapServer>data services</a>  are found! Click the link to see where the data is stored. 
+    <br>
+    <br>
+    The data used for this app was taken from the <a href=https://www.udot.utah.gov/main/f?p=100:pg:0::::V,T:,528>
+    UtahAADT</a> website. It shows the major roads throughout Utah as well as population density polygons.
+    <br>
+
+
+
+    </h3>
+    </center>
+</body>
+</html>
+
+{% endblock %}
+
+{% block after_app_content %}
+
+{% endblock %}
+
+{% block app_actions %}
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "mapapp/base.html" %}
+{% load tethys_gizmos %}
+
+{% block header_buttons %}
+  <div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Help">
+    <a data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a>
+  </div>
+{% endblock %}
+
+{% block app_content %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>G4L!!!</title>
+<style>
+  html, body, #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+
+  }
+  #viewDiv{
+  height: 700px;
+  }
+</style>
+<link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+<script src="https://js.arcgis.com/4.6/"></script>
+
+  <script>
+    	  var featureLayer;
+    	  var mapLayer
+		  function turnLayerOn () {
+		featureLayer.visible = !featureLayer.visible;
+		}
+		  function turnDEMLayerOn () {
+		mapLayer.visible = !mapLayer.visible;
+		}
+require([
+  "esri/Map",
+  "esri/layers/MapImageLayer",
+  "esri/views/MapView",
+  "dojo/domReady!"
+], function(Map, MapImageLayer, MapView){
+var map = new Map({
+    basemap: "streets"
+  });
+var rast_layer = new MapImageLayer({
+url: "http://geoserver2.byu.edu/arcgis/rest/services/Geoids/RoadsRaster/MapServer"
+});
+var vect_layer = new MapImageLayer({
+url: "http://geoserver2.byu.edu/arcgis/rest/services/Geoids/UtahAADT/MapServer"
+});
+map.layers.add(rast_layer);
+map.layers.add(vect_layer);
+var view = new MapView({
+    container: "viewDiv",  // Reference to the scene div created in step 5
+    map: map,  // Reference to the map object created before the scene
+    zoom: 7,  // Sets zoom level based on level of detail (LOD)
+    center: [-111.2, 39.2]  // Sets center point of view using longitude,latitude
+  });
+});
+</script>
+
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>
+{% endblock %}
