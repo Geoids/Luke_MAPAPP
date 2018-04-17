@@ -77,3 +77,29 @@ def about(request):
     }
 
     return render(request, 'mapapp/about.html', context)
+
+
+def proposal(request):
+    """
+    Controller for the app home page.
+    """
+
+
+    context = {
+
+    }
+
+    return render(request, 'mapapp/proposal.html', context)
+
+
+def mockups(request):
+    """
+    Controller for the app home page.
+    """
+
+
+    context = {
+
+    }
+
+    return render(request, 'mapapp/mockups.html', context)

@@ -44,6 +44,16 @@ class Mapapp(TethysAppBase):
                 url='mapapp/about',
                 controller='mapapp.controllers.about'
             ),
+            UrlMap(
+                name='proposal',
+                url='mapapp/proposal',
+                controller='mapapp.controllers.proposal'
+            ),
+            UrlMap(
+                name='mockups',
+                url='mapapp/mockups',
+                controller='mapapp.controllers.mockups'
+            ),
         )
 
         return url_maps
